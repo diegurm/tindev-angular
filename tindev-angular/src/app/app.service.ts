@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +9,31 @@ export class AppService {
 
   constructor(private http: HttpClient) {}
 
-  postDev(username): Observable<any> {
+  login(username): Promise<any> {
     return this.http.post<any>(`${this.baseURL}/devs`, {
       username
-    });
+    }).toPromise();
+  }
+
+  devs(currentId): Promise<any> {
+    return this.http.get(`${this.baseURL}/devs`, {
+      headers: { user: currentId }
+    }).toPromise();
+  }
+
+  dislike({ currentId, id }): Promise<any> {
+    return this.http.post(`${this.baseURL}/devs/${id}/dislikes`, null, {
+      headers: {
+        user: currentId
+      }
+    }).toPromise();
+  }
+
+  like({ currentId, id }): Promise<any> {
+    return this.http.post(`${this.baseURL}/devs/${id}/likes`, null, {
+      headers: {
+        user: currentId
+      }
+    }).toPromise();
   }
 }

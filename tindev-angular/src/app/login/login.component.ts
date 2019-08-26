@@ -1,6 +1,7 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AppService } from '../app.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private appService: AppService
+    private appService: AppService,
+    private router: Router
   ) {
     this.login = this.formBuilder.group({
       username: ['', Validators.compose([Validators.required])]
@@ -23,9 +25,9 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   async onSubmit({ username }) {
-    const response = await this.appService.postDev(username).toPromise();
+    const response = await this.appService.login(username);
     const { _id } = response;
 
-    console.log(_id);
+    this.router.navigate([`dev/${_id}`]);
   }
 }

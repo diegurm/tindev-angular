@@ -1,0 +1,37 @@
+<div class="main-container">
+  <a href="" [routerLink]="['/']">
+    <img src="../../assets/logo.svg" alt="Tindev" >
+  </a>
+
+  <ul *ngIf="users?.length > 0">
+    <li *ngFor="let user of users">
+      <img [src]="user.avatar" [alt]="user.username" />
+      <footer>
+        <strong>{{user.name}}</strong>
+        <p>{{user.bio}}</p>
+      </footer>
+
+      <div class="buttons">
+        <button type="button" (click)="handleDislike(user._id)" >
+          <img src="../../assets/dislike.svg" alt="Dislike" />
+        </button>
+        <button type="button" (click)="handleLike(user._id)">
+          <img src="../../assets/like.svg" alt="Like" />
+        </button>
+      </div>
+    </li>
+  </ul>
+
+  <div *ngIf="users?.length === 0" class="empty">Acabou :(</div>
+  <div *ngIf="matchDev" class="match-container">
+    <img src="../../assets/itsamatch.png" alt="" />
+
+    <img class="avatar" [src]="matchDev?.avatar" alt="" />
+    <strong>{{matchDev?.name}}</strong>
+    <p>{{matchDev?.bio}}</p>
+
+    <button type="button" (click)="matchDev = null">
+      Fechar
+    </button>
+  </div>
+</div>
