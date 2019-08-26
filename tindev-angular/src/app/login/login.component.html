@@ -1,0 +1,7 @@
+<div class="login-container">
+  <form [formGroup]="login" (ngSubmit)="onSubmit(login.value)">
+    <img src="../../assets/logo.svg" alt="Tindev">
+    <input type="text" formControlName="username" placeholder="Digite seu usuário do Github">
+    <button type="submit">Enviar</button>
+  </form>
+</div>
