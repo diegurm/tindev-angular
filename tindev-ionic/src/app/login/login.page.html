@@ -1,0 +1,13 @@
+<ion-content>
+  <div class="ion-padding login-container">
+    <img src="../../assets/logo.png" alt="Tindev" />
+    <form [formGroup]="login" (ngSubmit)="handleSubmit(login.value)">
+      <input
+        type="text"
+        formControlName="username"
+        placeholder="Digite seu usuário do Github"
+      />
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</ion-content>
