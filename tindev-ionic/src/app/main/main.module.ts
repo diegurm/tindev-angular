@@ -10,7 +10,12 @@ import { MainPage } from './main.page';
 const routes: Routes = [
   {
     path: '',
-    component: MainPage,
+    children: [
+      {
+        path: ':id',
+        component: MainPage,
+      },
+    ],
   },
 ];
 
