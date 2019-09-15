@@ -1,10 +1,28 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { Module, HttpModule } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+
+import { DevSchema } from './models/dev.schema';
+
+import { DevController } from './controllers/dev.controller';
+import { LikeController } from './controllers/like.controller';
+import { DislikeController } from './controllers/dislike.controller';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    HttpModule,
+    MongooseModule.forRoot(
+      'mongodb+srv://omnistack:omnistack@cluster0-wzxsv.mongodb.net/omnistack8?retryWrites=true&w=majority',
+      {
+        useNewUrlParser: true,
+      },
+    ),
+    MongooseModule.forFeature([{ name: 'Dev', schema: DevSchema }]),
+  ],
+  controllers: [
+    DevController,
+    LikeController,
+    DislikeController,
+  ],
+  providers: [],
 })
 export class AppModule {}
