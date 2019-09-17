@@ -6,6 +6,7 @@ import { DevSchema } from './models/dev.schema';
 import { DevController } from './controllers/dev.controller';
 import { LikeController } from './controllers/like.controller';
 import { DislikeController } from './controllers/dislike.controller';
+import { AppGateway } from './app.gateway';
 
 @Module({
   imports: [
@@ -17,12 +18,15 @@ import { DislikeController } from './controllers/dislike.controller';
       },
     ),
     MongooseModule.forFeature([{ name: 'Dev', schema: DevSchema }]),
+
   ],
   controllers: [
     DevController,
     LikeController,
     DislikeController,
   ],
-  providers: [],
+  providers: [
+    AppGateway,
+  ],
 })
 export class AppModule {}
