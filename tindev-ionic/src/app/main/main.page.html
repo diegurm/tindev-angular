@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <a href="" [routerLink]="['/']" class="logo">
+      <img src="../../assets/logo.png" alt="Tindev" />
+    </a>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img class="avatar" [src]="currentDev?.avatar" [alt]="currentDev?.username" />
+    <ion-card-header>
+      <ion-card-subtitle>{{ currentDev?.name }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>{{ currentDev?.bio }}</ion-card-content>
+  </ion-card>
+  <div class="buttons-container">
+    <ion-button class="button" (click)="handleDislike(currentDev?._id)">
+      <img src="../../assets/dislike.png" alt="Dislike" />
+    </ion-button>
+    <ion-button  class="button" (click)="handleLike(currentDev?._id)">
+      <img src="../../assets/like.png" alt="Like" />
+    </ion-button>
+  </div>
+</ion-content>
