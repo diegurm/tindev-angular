@@ -9,6 +9,6 @@ async function bootstrap() {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
   app.enableCors();
-  await app.listen(3333);
+  await app.listen(process.env.port || 3333);
 }
 bootstrap();
