@@ -35,7 +35,6 @@ export class LoginPage {
 
         loading.dismiss();
 
-        // this.router.navigate([`main`]);
         this.router.navigate([`dev/${_id}`]);
       })
       .catch(async () => {

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -11,6 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppService } from './app.service';
+import { SocketIoModule } from 'ngx-socket-io';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +19,9 @@ import { AppService } from './app.service';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(),
+    SocketIoModule.forRoot({
+      url: 'http://localhost:3333'
+    }),
     AppRoutingModule,
   ],
   providers: [
